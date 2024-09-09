@@ -1,3 +1,4 @@
+import Header from "@/components/header";
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
 import "./globals.css";
@@ -20,6 +21,7 @@ export default function RootLayout({
         className={`${inter.className} antialiased`}
       >
         <div className="h-full">
+          <Header />
           {children}
         </div>
       </body>
