@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import AuthProvider from "@/providers/auth-provider";
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
 import "./globals.css";
@@ -21,8 +22,10 @@ export default function RootLayout({
         className={`${inter.className} antialiased`}
       >
         <div className="h-full">
-          <Header />
-          {children}
+          <AuthProvider>
+            <Header />
+            {children}
+          </AuthProvider>
         </div>
       </body>
     </html>
