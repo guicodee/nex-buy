@@ -33,7 +33,7 @@ export default function SheetUser({ handleSignIn, handleSignOut }: SheetUserProp
           <SheetTitle className="mb-4">Perfil</SheetTitle>
         </SheetHeader>
 
-        {status === "authenticated" && data.user && (
+        {status === "authenticated" && data.user ? (
           <div className="flex items-center gap-2 mb-6">
             <Image 
               src={data.user.image!}
@@ -48,6 +48,10 @@ export default function SheetUser({ handleSignIn, handleSignOut }: SheetUserProp
               <h1 className="text-zinc-400 text-xs">{data?.user?.email}</h1>
             </div>
           </div>
+        ) : (
+          <h1 className="mb-6 text-zinc-100 text-sm">
+            Faça login e fique por dentro de todas as promoções e novidades.
+          </h1>
         )}
 
         <Separator />
