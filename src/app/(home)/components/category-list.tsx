@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { CATEGORY_ICON } from "@/constats/category-icon";
+import { CATEGORY_ICON } from "@/constants/category-icon";
 import { prismaClient } from "@/lib/prisma";
 
 export default async function CategoryList() {
