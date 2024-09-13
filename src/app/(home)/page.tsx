@@ -1,6 +1,6 @@
+import Banner from "@/components/banner";
 import ProductList from "@/components/ui/product-list";
 import { prismaClient } from "@/lib/prisma";
-import Image from "next/image";
 import Link from "next/link";
 import CategoryList from "./components/category-list";
 
@@ -31,23 +31,17 @@ export default async function Home() {
   
   return (
     <div className="space-y-12">
-      <Image 
-        width={0}
-        height={0}
-        src={'/banner-ofertas.png'}
-        className="w-full mx-auto max-lg:hidden"
-        sizes="100vw"
-        alt="Até 55% de desconto nesse mês."
+      <Banner 
+        alt="Até 55% de desconto nesse mês." 
+        src="/banner-ofertas.png" 
+        classname="max-lg:hidden" 
       />
 
       <div className="mx-auto flex flex-col px-5 gap-8 lg:container lg:gap-10">
-        <Image 
-          width={0}
-          height={0}
-          src={'/banner-descount.png'}
-          sizes="100vw"
-          className="h-auto w-full lg:hidden"
-          alt="Até 55% de desconto nesse mês."
+        <Banner 
+          alt="Até 55% de desconto nesse mês." 
+          src="/banner-descount.png" 
+          classname="lg:hidden" 
         />
         
         <CategoryList />
@@ -57,25 +51,28 @@ export default async function Home() {
         <ProductList products={productsDiscount} category="Ofertas" />
       </div>
 
-      <div className="flex items-center px-5 gap-5">
+      <div className="flex items-center max-lg:px-5 lg:px-5 lg:gap-5">
         <Link href={'/'}>
-          <Image 
-            src={'/banner-mouses.png'}
-            alt="Até 55% de desconto em mouses."
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="h-auto w-full"
+          <Banner 
+            alt="Até 55% de desconto em mouses." 
+            src="/banner-mouses.png" 
+            classname="lg:mx-auto max-lg:hidden" 
           />
         </Link>
+
         <Link href={'/'}>
-          <Image 
-            src={'/banner-fones.png'}
-            alt="Até 55% de desconto em fones."
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="h-auto w-full"
+          <Banner 
+            alt="Até 55% de desconto em mouses." 
+            src="/banner-mouses-mobile.png" 
+            classname="lg:mx-auto" 
+          />
+        </Link>
+
+        <Link href={'/'}>
+          <Banner 
+            alt="Até 55% de desconto em fones." 
+            src="/banner-fones.png" 
+            classname="max-lg:hidden" 
           />
         </Link>
       </div>
@@ -84,15 +81,20 @@ export default async function Home() {
         <ProductList products={keyboards} category="Teclados" />
       </div>
 
-      <div className="flex items-center px-5 gap-5">
-        <Image 
-          src={'/banner-fretegratis.png'}
+      <div className="lg:px-5 max-lg:px-5">
+        <Banner 
           alt="Frete grátis para todo o Brasil."
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="h-auto w-full"
+          src="/banner-fretegratis.png"
+          classname="max-lg:hidden"
         />
+
+        <Link href={'/'} className="w-full">
+          <Banner 
+            alt="Até 55% de desconto em fones." 
+            src="/banner-fones-mobile.png" 
+            classname="lg:hidden" 
+          />
+        </Link> 
       </div>
 
       <div className="px-2 space-y-4">

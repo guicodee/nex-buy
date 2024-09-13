@@ -1,3 +1,4 @@
+import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
 import AuthProvider from "@/providers/auth-provider";
 import type { Metadata } from "next";
@@ -25,6 +26,7 @@ export default function RootLayout({
           <AuthProvider>
             <Header />
             {children}
+            <Footer />
           </AuthProvider>
         </div>
       </body>
