@@ -24,8 +24,8 @@ export default function Header() {
     <>
       <Card className="px-20 py-8 flex justify-between items-center max-md:hidden">
         <Link href={'/'} className="flex items-center gap-3">
-          <ShoppingBag size={32} />
-          <p className="text-zinc-200 font-black uppercase text-xl tracking-wider">NexBuy</p>
+          <ShoppingBag size={28} />
+          <p className="text-zinc-200 font-black uppercase text-xl tracking-">NexBuy</p>
         </Link>
 
         <div className="flex items-center gap-4 h-5">
@@ -33,7 +33,7 @@ export default function Header() {
             Início
           </Link>
           <Separator orientation="vertical" />
-          <Link href={'/'} className="hover:underline hover:text-zinc-300">
+          <Link href={'/catalog'} className="hover:underline hover:text-zinc-300">
             Catálogo
           </Link>
           <Separator orientation="vertical" />
@@ -52,9 +52,9 @@ export default function Header() {
       <Card className="px-7 py-4 flex justify-between items-center md:hidden">
         <SheetMobile handleSignIn={handleSignIn} handleSignOut={handleSignOut} />
 
-        <Link href={'/'} className="flex items-center gap-3">
-          <ShoppingBag size={32} />
-          <p className="text-zinc-200 font-black uppercase text-xl tracking-wider">NexBuy</p>
+        <Link href={'/'} className="flex items-center gap-2">
+          <ShoppingBag size={24} />
+          <p className="text-zinc-200 font-black uppercase tracking-wider">NexBuy</p>
         </Link>
 
         <SheetCart />

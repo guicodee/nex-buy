@@ -8,11 +8,13 @@ import {
 } from "lucide-react"
 import { useSession } from "next-auth/react"
 import Image from "next/image"
+import Link from "next/link"
 import CustomButton from "./custom-button"
 import { Button } from "./ui/button"
 import { Separator } from "./ui/separator"
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -89,11 +91,15 @@ export default function SheetMobile({ handleSignIn, handleSignOut }: SheetMobile
             variant={"outline"} 
           />
           
-          <CustomButton 
-            text="Catálogo" 
-            icon={<ListCollapse size={18} />} 
-            variant={"outline"} 
-          />
+          <SheetClose asChild>
+            <Link href={'/catalog'} >
+              <CustomButton 
+                text="Catálogo" 
+                icon={<ListCollapse size={18} />} 
+                variant={"outline"} 
+              />
+            </Link>
+          </SheetClose>
         </div>
       </SheetContent>
     </Sheet>

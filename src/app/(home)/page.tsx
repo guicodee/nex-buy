@@ -30,7 +30,7 @@ export default async function Home() {
   })
   
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 pb-8">
       <Banner 
         alt="Até 55% de desconto nesse mês." 
         src="/banner-ofertas.png" 
@@ -64,7 +64,7 @@ export default async function Home() {
           <Banner 
             alt="Até 55% de desconto em mouses." 
             src="/banner-mouses-mobile.png" 
-            classname="lg:mx-auto" 
+            classname="lg:mx-auto lg:hidden" 
           />
         </Link>
 

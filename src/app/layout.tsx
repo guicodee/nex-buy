@@ -22,10 +22,10 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased`}
       >
-        <div className="h-full">
+        <div className="h-screen flex flex-col">
           <AuthProvider>
             <Header />
-            {children}
+            <div className="flex-1">{children}</div>
             <Footer />
           </AuthProvider>
         </div>
