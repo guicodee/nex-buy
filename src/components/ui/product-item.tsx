@@ -1,7 +1,7 @@
 import { ProductWithTotalPrice } from "@/helpers/product"
 import Image from "next/image"
 import Link from "next/link"
-import { Badge } from "./badge"
+import DiscountBadge from "../discount-badge"
 
 interface ProductItemProps {
   product: ProductWithTotalPrice
@@ -11,7 +11,7 @@ export default function ProductItem({ product }: ProductItemProps) {
 
   return (
     <Link href={'/'}>
-      <div className="flex flex-col gap-x-4 gap-y-1 w-[156px]">
+      <div className="flex flex-col gap-4 w-[156px]">
         <div className="relative bg-accent rounded-lg h-[170px] flex items-center justify-center">
           <Image
             src={product.imageUrls[0]}
@@ -21,15 +21,13 @@ export default function ProductItem({ product }: ProductItemProps) {
             sizes="100vw"
             className="h-auto w-auto max-w-[80%] max-h-[70%] object-contain"
           />
-        </div>
 
-        {product.discountPercentage > 0 && (
-          <div className="relative -top-44 left-2 mt-2">
-            <Badge className="absolute" variant={"primary"}>
-              <span>{product.discountPercentage}%</span>
-            </Badge>
-          </div>
-        )}
+          {product.discountPercentage > 0 && (
+            <div className="absolute left-2 top-2">
+              <DiscountBadge>{product.discountPercentage}</DiscountBadge>
+            </div>
+          )}
+        </div>
 
         <div>
           <p className="text-zinc-200 text-sm truncate">{product.name}</p>
