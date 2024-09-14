@@ -14,7 +14,7 @@ export default async function Catalog() {
 			</div>
 			<div className="grid max-lg:grid-cols-2 max-md:grid-cols-1 lg:grid-cols-3 gap-8">
 				{categories.map((category) => (
-					<Link href={'/'} key={category.id}>
+					<Link href={`/category/${category.slug}`} key={category.id}>
 						<div className="flex flex-col">
 							<div className="flex h-[150px] w-full items-center justify-center rounded-tl-lg rounded-tr-lg bg-gradient-to-r from-violet-800 to-violet-950">
 								<Image

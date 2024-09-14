@@ -51,7 +51,7 @@ export default async function Home() {
 				<ProductList products={productsDiscount} category="Ofertas" />
 			</div>
 
-			<div className="flex items-center max-lg:px-5 lg:px-5 lg:gap-5">
+			<div className="lg:flex lg:items-center max-lg:px-5 lg:px-5 lg:gap-2">
 				<Link href={'/'}>
 					<Banner
 						alt="Até 55% de desconto em mouses."
