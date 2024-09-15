@@ -40,7 +40,7 @@ export default function Header() {
 						Catálogo
 					</Link>
 					<Separator orientation="vertical" />
-					<Link href={'/'} className="hover:underline hover:text-zinc-300">
+					<Link href={'/deals'} className="hover:underline hover:text-zinc-300">
 						Ofertas
 					</Link>
 				</div>

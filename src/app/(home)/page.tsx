@@ -31,18 +31,22 @@ export default async function Home() {
 
 	return (
 		<div className="space-y-12 pb-8">
-			<Banner
-				alt="Até 55% de desconto nesse mês."
-				src="/banner-ofertas.png"
-				classname="max-lg:hidden"
-			/>
-
-			<div className="mx-auto flex flex-col px-5 gap-8 lg:container lg:gap-10">
+			<Link href={'/deals'}>
 				<Banner
 					alt="Até 55% de desconto nesse mês."
-					src="/banner-descount.png"
-					classname="lg:hidden"
+					src="/banner-ofertas.png"
+					classname="max-lg:hidden"
 				/>
+			</Link>
+
+			<div className="mx-auto flex flex-col px-5 gap-8 lg:container lg:gap-10">
+				<Link href={'/deals'}>
+					<Banner
+						alt="Até 55% de desconto nesse mês."
+						src="/banner-descount.png"
+						classname="lg:hidden"
+					/>
+				</Link>
 
 				<CategoryList />
 			</div>
@@ -52,7 +56,7 @@ export default async function Home() {
 			</div>
 
 			<div className="lg:flex lg:items-center max-lg:px-5 lg:px-5 lg:gap-2">
-				<Link href={'/'}>
+				<Link href={'/category/mouses'}>
 					<Banner
 						alt="Até 55% de desconto em mouses."
 						src="/banner-mouses.png"
@@ -60,7 +64,7 @@ export default async function Home() {
 					/>
 				</Link>
 
-				<Link href={'/'}>
+				<Link href={'/category/mouses'}>
 					<Banner
 						alt="Até 55% de desconto em mouses."
 						src="/banner-mouses-mobile.png"
@@ -68,7 +72,7 @@ export default async function Home() {
 					/>
 				</Link>
 
-				<Link href={'/'}>
+				<Link href={'/category/headphones'}>
 					<Banner
 						alt="Até 55% de desconto em fones."
 						src="/banner-fones.png"
@@ -88,7 +92,7 @@ export default async function Home() {
 					classname="max-lg:hidden"
 				/>
 
-				<Link href={'/'} className="w-full">
+				<Link href={'/category/headphones'} className="w-full">
 					<Banner
 						alt="Até 55% de desconto em fones."
 						src="/banner-fones-mobile.png"
