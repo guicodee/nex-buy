@@ -9,7 +9,7 @@ interface ProductItemProps {
 
 export default function ProductItem({ product }: ProductItemProps) {
 	return (
-		<Link href={'/'}>
+		<Link href={`/product/${product.slug}`}>
 			<div className="flex flex-col gap-4 w-[156px]">
 				<div className="relative bg-accent rounded-lg h-[170px] flex items-center justify-center">
 					<Image
