@@ -1,6 +1,7 @@
 import Footer from '@/components/ui/footer';
 import Header from '@/components/ui/header';
 import AuthProvider from '@/providers/auth-provider';
+import CartProvider from '@/providers/cart-provider';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -22,9 +23,11 @@ export default function RootLayout({
 			<body className={`${inter.className} antialiased`}>
 				<div className="h-screen flex flex-col">
 					<AuthProvider>
-						<Header />
-						<div className="flex-1">{children}</div>
-						<Footer />
+						<CartProvider>
+							<Header />
+							<div className="flex-1">{children}</div>
+							<Footer />
+						</CartProvider>
 					</AuthProvider>
 				</div>
 			</body>
