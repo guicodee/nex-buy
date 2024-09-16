@@ -1,9 +1,7 @@
-import {
-	computeProductTotalPrice,
-	ProductWithTotalPrice,
-} from '@/helpers/product';
+import ProductList from '@/components/ui/product-list';
+import { computeProductTotalPrice } from '@/helpers/product';
 import { prismaClient } from '@/lib/prisma';
-import Image from 'next/image';
+import ProductImages from './components/product-images';
 import ProductInfo from './components/product-info';
 
 interface ProductProps {
@@ -13,7 +11,7 @@ interface ProductProps {
 }
 
 export default async function Product({ params: { slug } }: ProductProps) {
-	const products: ProductWithTotalPrice = await prismaClient.product.findFirst({
+	const products = await prismaClient.product.findFirst({
 		where: {
 			slug,
 		},
@@ -32,25 +30,22 @@ export default async function Product({ params: { slug } }: ProductProps) {
 		},
 	});
 
-	console.log(products);
+	if (!products) return null;
 
 	return (
-		<div className="grid grid-cols-2 gap-8 px-12 py-4 mx-auto">
-			<div className="bg-zinc-900 flex items-center justify-center w-full h-[670px] rounded-lg">
-				<Image
-					src={products?.imageUrls[0] as string}
-					alt="djsajdsap"
-					width={0}
-					height={0}
-					sizes="100vw"
-					className="w-full h-auto max-w-[70%] max-h-[80%]"
+		<div>
+			<div className="grid grid-cols-2 gap-2 lg:px-12 lg:py-4 mx-auto max-lg:flex max-lg:flex-col">
+				<ProductImages imagesUrls={products.imageUrls} name={products.id} />
+				<ProductInfo
+					products={computeProductTotalPrice(products)}
+					key={products?.id}
 				/>
 			</div>
 
-			<ProductInfo
-				products={computeProductTotalPrice(products)}
-				key={products.id}
-			/>
+			<div className="px-4 space-y-4 my-8 lg:px-12 ">
+				<h1 className="font-bold text-lg uppercase">Produtos recomendados</h1>
+				<ProductList products={products.category.products} />
+			</div>
 		</div>
 	);
 }

@@ -9,7 +9,7 @@ interface ProductInfoProps {
 
 export default function ProductInfo({ products }: ProductInfoProps) {
 	return (
-		<div className="bg-zinc-900 px-10 py-8 rounded-lg flex flex-col gap-8">
+		<div className="lg:bg-zinc-900 max-lg:px-4 lg:px-8 max-lg:py-4 lg:py-8 rounded-lg flex flex-col gap-8">
 			<div>
 				<h1 className="text-2xl leading-8">{products?.name}</h1>
 				<span className="text-sm text-violet-400">Disponível em estoque</span>
@@ -17,12 +17,14 @@ export default function ProductInfo({ products }: ProductInfoProps) {
 			<div>
 				{products?.discountPercentage > 0 ? (
 					<div className="flex flex-col">
-						<div className="text-zinc-200 text-2xl font-black flex gap-3">
+						<div className="text-zinc-200 text-2xl max-sm:text-xl font-black flex gap-3">
 							R$ {products?.totalPrice.toFixed(2)}
-							<DiscountBadge>{products.discountPercentage}</DiscountBadge>
+							<DiscountBadge className="max-sm:text-xs">
+								{products.discountPercentage}
+							</DiscountBadge>
 						</div>
 
-						<p className="text-zinc-400 text-sm tracking-wide">
+						<p className="text-zinc-400 text-sm max-sm:text-xs tracking-wide">
 							De:
 							<span className="line-through ml-2">
 								R$ {Number(products?.basePrice).toFixed(2)}
@@ -40,7 +42,7 @@ export default function ProductInfo({ products }: ProductInfoProps) {
 						<ArrowLeft size={16} />
 					</Button>
 
-					<span>1</span>
+					<span className="max-sm:text-sm">1</span>
 
 					<Button variant={'outline'} size={'icon'}>
 						<ArrowRight size={16} />
@@ -61,14 +63,14 @@ export default function ProductInfo({ products }: ProductInfoProps) {
 					>
 						Adicionar ao carrinho
 					</Button>
-					<div className="bg-zinc-800 w-full flex gap-4 items-center px-8 py-4 rounded-lg">
+					<div className="bg-zinc-800 w-full flex gap-4 items-center px-4 py-4 rounded-lg">
 						<div className="text-sm flex-1 items-center flex gap-4">
 							<TruckIcon size={28} />
 							<div>
-								<p>
+								<p className="max-sm:text-xs">
 									Entrega via <span className="font-bold">NexBuy</span>
 								</p>
-								<p className="text-violet-400">
+								<p className="text-violet-400 max-sm:text-xs">
 									Envio para <span className="font-bold">todo o Brasil</span>
 								</p>
 							</div>
