@@ -1,7 +1,8 @@
 'use client';
 
+import { getLocalStorageCartProducts } from '@/helpers/get-local-storage';
 import { ProductWithTotalPrice } from '@/helpers/product';
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 
 export interface CartProduct extends ProductWithTotalPrice {
 	quantity: number;
@@ -24,7 +25,12 @@ export const CartContext = createContext<ICartContext>({
 });
 
 export default function CartProvider({ children }: { children: ReactNode }) {
-	const [products, setProducts] = useState<CartProduct[]>([]);
+	const cartProducts = getLocalStorageCartProducts();
+	const [products, setProducts] = useState<CartProduct[]>(cartProducts);
+
+	useEffect(() => {
+		localStorage.setItem('@cart-products/products', JSON.stringify(products));
+	}, [products]);
 
 	function addProdcutsToCart(product: CartProduct) {
 		const productIsAlreadyOnCart = products.some(
