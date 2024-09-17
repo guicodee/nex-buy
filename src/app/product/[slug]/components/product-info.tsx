@@ -1,13 +1,24 @@
+'use client';
+
 import DiscountBadge from '@/components/discount-badge';
 import { Button } from '@/components/ui/button';
 import { ProductWithTotalPrice } from '@/helpers/product';
+import { CartContext } from '@/providers/cart-provider';
 import { ArrowLeft, ArrowRight, TruckIcon } from 'lucide-react';
+import { useContext, useState } from 'react';
 
 interface ProductInfoProps {
 	products: ProductWithTotalPrice;
 }
 
 export default function ProductInfo({ products }: ProductInfoProps) {
+	const [quantity, setQuantity] = useState(1);
+	const { addProdcutsToCart } = useContext(CartContext);
+
+	function handleAddProductToCart() {
+		addProdcutsToCart({ ...products, quantity });
+	}
+
 	return (
 		<div className="lg:bg-zinc-900 max-lg:px-4 lg:px-8 max-lg:py-4 lg:py-8 rounded-lg flex flex-col gap-8">
 			<div>
@@ -60,6 +71,7 @@ export default function ProductInfo({ products }: ProductInfoProps) {
 					<Button
 						variant={'ghost'}
 						className="bg-violet-700 text-zinc-200 uppercase w-full hover:bg-violet-800"
+						onClick={handleAddProductToCart}
 					>
 						Adicionar ao carrinho
 					</Button>
