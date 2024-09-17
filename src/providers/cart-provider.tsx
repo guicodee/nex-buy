@@ -52,7 +52,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
 
 	const total = useMemo(() => {
 		return products.reduce((acc, product) => {
-			return acc + product.totalPrice * product.quantity;
+			return acc + Number(product.totalPrice) * product.quantity;
 		}, 0);
 	}, [products]);
 
