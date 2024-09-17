@@ -35,7 +35,7 @@ export default function ProductImages({
 					<button
 						onClick={() => handleNextImageToSelect(imageUrl)}
 						key={imageUrl}
-						className={`max-lg:bg-accent lg:bg-zinc-950 rounded-xl flex items-center justify-center h-[100px]
+						className={`max-lg:bg-accent lg:bg-zinc-950 rounded-xl flex items-center justify-center h-[80px] w-[80px]
               ${imageUrl === currentImage && 'border-2 border-violet-700'} 
           `}
 					>
