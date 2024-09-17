@@ -62,6 +62,10 @@ export default function SheetCart() {
 							<p className="flex-1">Total</p>
 							<p>R$ {total.toFixed(2)}</p>
 						</div>
+
+						<Button className="bg-violet-700 text-zinc-200 uppercase hover:bg-violet-800 mt-4">
+							Finalizar compra
+						</Button>
 					</div>
 				</div>
 			</SheetContent>

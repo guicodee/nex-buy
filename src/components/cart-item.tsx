@@ -40,7 +40,9 @@ export default function CartItem({ product }: CartItem) {
 				/>
 			</div>
 			<div className="flex pl-2 flex-col flex-1">
-				<p className="text-xs truncate w-fit max-w-[80px]">{product.name}</p>
+				<p className="text-xs truncate w-fit max-sm:max-w-[110px]">
+					{product.name}
+				</p>
 				{product.discountPercentage > 0 ? (
 					<div>
 						<span className="text-xs font-bold">
