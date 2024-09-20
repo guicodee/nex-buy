@@ -1,7 +1,9 @@
 import createCheckout from '@/actions/checkout';
+import createOrder from '@/actions/order';
 import { CartContext } from '@/providers/cart-provider';
 import { loadStripe } from '@stripe/stripe-js';
 import { ShoppingCart } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import { useContext } from 'react';
 import CartItem from './cart-item';
 import { Button } from './ui/button';
@@ -16,9 +18,13 @@ import {
 } from './ui/sheet';
 
 export default function SheetCart() {
+	const { data } = useSession();
 	const { products, subtotal, total, totalDiscount } = useContext(CartContext);
 
 	async function handleFinishBuy() {
+		if (!data?.user) return;
+		await createOrder(products, (data.user as any).id);
+
 		const checkout = await createCheckout(products);
 		const stripe = await loadStripe(
 			process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string

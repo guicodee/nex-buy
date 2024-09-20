@@ -8,13 +8,15 @@ export default async function createCheckout(products: CartProduct[]) {
 		apiVersion: '2024-06-20',
 	});
 
+	const productIds = products.map((product) => product.id).join(',');
+
 	const checkout = await stripe.checkout.sessions.create({
 		payment_method_types: ['card'],
 		mode: 'payment',
 		success_url: 'http://localhost:3000/catalog',
 		cancel_url: 'http://localhost:3000/',
 		metadata: {
-			products: JSON.stringify(products),
+			products_ids: productIds,
 		},
 		line_items: products.map((product) => {
 			return {
