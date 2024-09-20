@@ -1,4 +1,6 @@
+import createCheckout from '@/actions/checkout';
 import { CartContext } from '@/providers/cart-provider';
+import { loadStripe } from '@stripe/stripe-js';
 import { ShoppingCart } from 'lucide-react';
 import { useContext } from 'react';
 import CartItem from './cart-item';
@@ -15,6 +17,17 @@ import {
 
 export default function SheetCart() {
 	const { products, subtotal, total, totalDiscount } = useContext(CartContext);
+
+	async function handleFinishBuy() {
+		const checkout = await createCheckout(products);
+		const stripe = await loadStripe(
+			process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY as string
+		);
+
+		stripe?.redirectToCheckout({
+			sessionId: checkout.id,
+		});
+	}
 
 	return (
 		<Sheet>
@@ -63,7 +76,10 @@ export default function SheetCart() {
 							<p>R$ {total.toFixed(2)}</p>
 						</div>
 
-						<Button className="bg-violet-700 text-zinc-200 uppercase hover:bg-violet-800 mt-4">
+						<Button
+							className="bg-violet-700 text-zinc-200 uppercase hover:bg-violet-800 mt-4"
+							onClick={handleFinishBuy}
+						>
 							Finalizar compra
 						</Button>
 					</div>
