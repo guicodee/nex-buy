@@ -13,6 +13,9 @@ export default async function createCheckout(products: CartProduct[]) {
 		mode: 'payment',
 		success_url: 'http://localhost:3000/catalog',
 		cancel_url: 'http://localhost:3000/',
+		metadata: {
+			products: JSON.stringify(products),
+		},
 		line_items: products.map((product) => {
 			return {
 				price_data: {
