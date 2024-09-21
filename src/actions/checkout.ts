@@ -3,12 +3,13 @@
 import { CartProduct } from '@/providers/cart-provider';
 import Stripe from 'stripe';
 
-export default async function createCheckout(products: CartProduct[]) {
+export default async function createCheckout(
+	products: CartProduct[],
+	orderId: string
+) {
 	const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 		apiVersion: '2024-06-20',
 	});
-
-	const productIds = products.map((product) => product.id).join(',');
 
 	const checkout = await stripe.checkout.sessions.create({
 		payment_method_types: ['card'],
@@ -16,7 +17,7 @@ export default async function createCheckout(products: CartProduct[]) {
 		success_url: 'http://localhost:3000/catalog',
 		cancel_url: 'http://localhost:3000/',
 		metadata: {
-			products_ids: productIds,
+			orderId,
 		},
 		line_items: products.map((product) => {
 			return {

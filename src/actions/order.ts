@@ -7,7 +7,7 @@ export default async function createOrder(
 	cartProducts: CartProduct[],
 	userId: string
 ) {
-	await prismaClient.order.create({
+	const order = await prismaClient.order.create({
 		data: {
 			userId,
 			status: 'WAITING_FOR_PAYMENT',
@@ -23,4 +23,6 @@ export default async function createOrder(
 			},
 		},
 	});
+
+	return order;
 }
