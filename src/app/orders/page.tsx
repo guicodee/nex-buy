@@ -34,7 +34,7 @@ export default async function Orders() {
 				Meus pedidos
 			</Badge>
 
-			<div>
+			<div className="space-y-6">
 				{orders.map((order) => (
 					<OrderItem key={order.id} order={order} />
 				))}
