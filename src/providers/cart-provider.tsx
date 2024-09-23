@@ -2,7 +2,7 @@
 
 import { getLocalStorageCartProducts } from '@/helpers/get-local-storage';
 import { ProductWithTotalPrice } from '@/helpers/product';
-import { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
+import { ReactNode, createContext, useEffect, useMemo, useState } from 'react';
 
 export interface CartProduct extends ProductWithTotalPrice {
 	quantity: number;
