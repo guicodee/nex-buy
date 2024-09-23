@@ -6,13 +6,13 @@ import { getServerSession } from 'next-auth';
 import OrderItem from './components/order-item';
 
 export default async function Orders() {
-	const user = await getServerSession(authOptions);
+	const session = await getServerSession(authOptions);
 
-	if (!user?.user) return <h1>Acesso negado</h1>;
+	if (!session || !session.user) return <h1>Acesso negado</h1>;
 
 	const orders = await prismaClient.order.findMany({
 		where: {
-			userId: user.user.id,
+			userId: session.user.id,
 			status: 'PAYMENT_CONFIRMED',
 		},
 		include: {
