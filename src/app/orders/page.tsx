@@ -3,12 +3,13 @@ import { authOptions } from '@/lib/auth';
 import { prismaClient } from '@/lib/prisma';
 import { ShoppingBasket } from 'lucide-react';
 import { getServerSession } from 'next-auth';
+import AccessDenied from './components/access-denied';
 import OrderItem from './components/order-item';
 
 export default async function Orders() {
 	const session = await getServerSession(authOptions);
 
-	if (!session || !session.user) return <h1>Acesso negado</h1>;
+	if (!session || !session.user) return <AccessDenied />;
 
 	const orders = await prismaClient.order.findMany({
 		where: {
