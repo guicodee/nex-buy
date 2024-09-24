@@ -1,11 +1,13 @@
-import { LogIn, LogOut, User2 } from 'lucide-react';
+import { LogIn, LogOut, PackageSearch, User2 } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import CustomButton from './custom-button';
 import { Button } from './ui/button';
 import { Separator } from './ui/separator';
 import {
 	Sheet,
+	SheetClose,
 	SheetContent,
 	SheetHeader,
 	SheetTitle,
@@ -59,7 +61,7 @@ export default function SheetUser({
 
 				<Separator />
 
-				<div className="mt-4">
+				<div className="mt-4 flex flex-col gap-4">
 					{status === 'unauthenticated' ? (
 						<CustomButton
 							onClick={handleSignIn}
@@ -75,6 +77,16 @@ export default function SheetUser({
 							variant={'outline'}
 						/>
 					)}
+
+					<SheetClose asChild>
+						<Link href={'/orders'}>
+							<CustomButton
+								text="Meus pedidos"
+								icon={<PackageSearch size={18} />}
+								variant={'outline'}
+							/>
+						</Link>
+					</SheetClose>
 				</div>
 			</SheetContent>
 		</Sheet>
