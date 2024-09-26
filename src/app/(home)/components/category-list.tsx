@@ -10,7 +10,7 @@ export default async function CategoryList() {
 		<div className="flex items-center justify-center gap-6 max-lg:grid max-lg:grid-cols-2">
 			{categories.map((category) => (
 				<Link href={`/category/${category.slug}`}>
-					<Button key={category.id} variant={'outline'}>
+					<Button key={category.id} variant={'outline'} className="w-full">
 						<div className="flex items-center px-4 gap-2">
 							{CATEGORY_ICON[category.slug as keyof typeof CATEGORY_ICON]}
 							<span>{category.name}</span>
