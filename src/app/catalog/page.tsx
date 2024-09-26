@@ -1,3 +1,4 @@
+import BadgeCustom from '@/components/badge-custom';
 import { prismaClient } from '@/lib/prisma';
 import { Grid2X2 } from 'lucide-react';
 import Image from 'next/image';
@@ -8,10 +9,8 @@ export default async function Catalog() {
 
 	return (
 		<div className="container mx-auto py-4 px-4 space-y-8">
-			<div className="flex items-center gap-2 border border-violet-400 w-fit px-4 py-2 rounded-full">
-				<Grid2X2 size={24} />
-				<h1 className="uppercase font-bold">Catálogo</h1>
-			</div>
+			<BadgeCustom text="Catálogo" icon={<Grid2X2 size={20} />} />
+
 			<div className="grid max-lg:grid-cols-2 max-md:grid-cols-1 lg:grid-cols-3 gap-8">
 				{categories.map((category) => (
 					<Link href={`/category/${category.slug}`} key={category.id}>

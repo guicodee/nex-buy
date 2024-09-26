@@ -1,4 +1,4 @@
-import { Badge } from '@/components/ui/badge';
+import BadgeCustom from '@/components/badge-custom';
 import { authOptions } from '@/lib/auth';
 import { prismaClient } from '@/lib/prisma';
 import { ShoppingBasket } from 'lucide-react';
@@ -27,13 +27,7 @@ export default async function Orders() {
 
 	return (
 		<div className="container mx-auto py-4 px-4 space-y-12">
-			<Badge
-				variant={'outline'}
-				className="px-4 py-2 flex items-center gap-3 w-fit uppercase font-bold text-base border-violet-400"
-			>
-				<ShoppingBasket size={18} />
-				Meus pedidos
-			</Badge>
+			<BadgeCustom text="Meus pedidos" icon={<ShoppingBasket size={18} />} />
 
 			<div className="space-y-6">
 				{orders.map((order) => (
