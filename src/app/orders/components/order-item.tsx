@@ -1,3 +1,4 @@
+import CheckoutSummary from '@/components/checkout-summary';
 import {
 	Accordion,
 	AccordionContent,
@@ -82,30 +83,11 @@ export default function OrderItem({ order }: OrderItemProps) {
 						</div>
 
 						<div className="flex flex-col space-y-4">
-							<Separator className="mt-4" />
-
-							<div className="flex text-sm text-zinc-200">
-								<p className="flex-1">Subtotal</p>
-								<p>R$ {subtotal.toFixed(2)}</p>
-							</div>
-
-							<Separator />
-							<div className="flex text-sm text-zinc-200">
-								<p className="flex-1">Entrega</p>
-								<p>GRÁTIS</p>
-							</div>
-
-							<Separator />
-							<div className="flex text-sm text-zinc-200">
-								<p className="flex-1">Descontos</p>
-								<p>-R$ {totalDiscount.toFixed(2)}</p>
-							</div>
-
-							<Separator />
-							<div className="flex text-sm font-bold text-zinc-200">
-								<p className="flex-1">Total</p>
-								<p>R$ {total.toFixed(2)}</p>
-							</div>
+							<CheckoutSummary
+								subtotal={subtotal}
+								total={total}
+								totalDiscount={totalDiscount}
+							/>
 						</div>
 					</AccordionContent>
 				</AccordionItem>
