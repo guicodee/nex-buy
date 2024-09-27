@@ -31,6 +31,7 @@ export default function ProductInfo({ products }: ProductInfoProps) {
 			title: 'Produto adicionado!',
 			description: 'O Produto foi adicionado com sucesso ao carrinho.',
 			variant: 'success',
+			duration: 2500,
 		});
 	}
 

@@ -1,3 +1,4 @@
+import { useToast } from '@/hooks/use-toast';
 import { CartContext, CartProduct } from '@/providers/cart-provider';
 import { ArrowLeft, ArrowRight, Trash } from 'lucide-react';
 import Image from 'next/image';
@@ -15,6 +16,8 @@ export default function CartItem({ product }: CartItem) {
 		removeProductToCart,
 	} = useContext(CartContext);
 
+	const { toast } = useToast();
+
 	function handleIncreaseProductQuantity() {
 		increaseProductQuantity(product.id);
 	}
@@ -25,6 +28,12 @@ export default function CartItem({ product }: CartItem) {
 
 	function handleRemoveProductToCart() {
 		removeProductToCart(product.id);
+		toast({
+			title: 'Produto removido.',
+			description: 'O produto foi removido do carrinho.',
+			duration: 2500,
+			variant: 'destructive',
+		});
 	}
 
 	return (
@@ -40,15 +49,15 @@ export default function CartItem({ product }: CartItem) {
 				/>
 			</div>
 			<div className="flex pl-2 flex-col flex-1">
-				<p className="text-xs truncate w-fit max-sm:max-w-[110px]">
+				<p className="text-xs truncate w-fit max-sm:max-w-[110px] lg:text-sm">
 					{product.name}
 				</p>
 				{product.discountPercentage > 0 ? (
 					<div>
-						<span className="text-xs font-bold">
+						<span className="text-xs font-bold lg:text-sm">
 							R$ {product.totalPrice.toFixed(2)}
 						</span>
-						<span className="text-zinc-400 text-[10px] line-through ml-2">
+						<span className="text-zinc-400 text-[10px] line-through ml-2 lg:text-xs">
 							R$ {Number(product.basePrice).toFixed(2)}
 						</span>
 					</div>
