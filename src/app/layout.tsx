@@ -1,5 +1,6 @@
 import Footer from '@/components/ui/footer';
 import Header from '@/components/ui/header';
+import { Toaster } from '@/components/ui/toaster';
 import AuthProvider from '@/providers/auth-provider';
 import CartProvider from '@/providers/cart-provider';
 import type { Metadata } from 'next';
@@ -27,6 +28,7 @@ export default function RootLayout({
 							<Header />
 							<div className="flex-1">{children}</div>
 							<Footer />
+							<Toaster />
 						</CartProvider>
 					</AuthProvider>
 				</div>
