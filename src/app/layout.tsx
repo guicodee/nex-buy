@@ -28,10 +28,10 @@ export default function RootLayout({
 							<Header />
 							<div className="flex-1">{children}</div>
 							<Footer />
-							<Toaster />
 						</CartProvider>
 					</AuthProvider>
 				</div>
+				<Toaster />
 			</body>
 		</html>
 	);
