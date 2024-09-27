@@ -3,6 +3,7 @@
 import DiscountBadge from '@/components/discount-badge';
 import { Button } from '@/components/ui/button';
 import { ProductWithTotalPrice } from '@/helpers/product';
+import { useToast } from '@/hooks/use-toast';
 import { CartContext } from '@/providers/cart-provider';
 import { ArrowLeft, ArrowRight, TruckIcon } from 'lucide-react';
 import { useContext, useState } from 'react';
@@ -14,9 +15,23 @@ interface ProductInfoProps {
 export default function ProductInfo({ products }: ProductInfoProps) {
 	const [quantity, setQuantity] = useState(1);
 	const { addProdcutsToCart } = useContext(CartContext);
+	const { toast } = useToast();
+
+	function handleIncreaseProductQuantity() {
+		setQuantity((prev) => prev + 1);
+	}
+
+	function handleDecreaseProductQuantity() {
+		setQuantity((prev) => prev - 1);
+	}
 
 	function handleAddProductToCart() {
 		addProdcutsToCart({ ...products, quantity });
+		toast({
+			title: 'Produto adicionado!',
+			description: 'O Produto foi adicionado com sucesso ao carrinho.',
+			variant: 'success',
+		});
 	}
 
 	return (
@@ -49,13 +64,21 @@ export default function ProductInfo({ products }: ProductInfoProps) {
 				)}
 
 				<div className="flex gap-4 items-center mt-4">
-					<Button variant={'outline'} size={'icon'}>
+					<Button
+						variant={'outline'}
+						size={'icon'}
+						onClick={handleDecreaseProductQuantity}
+					>
 						<ArrowLeft size={16} />
 					</Button>
 
-					<span className="max-sm:text-sm">1</span>
+					<span className="max-sm:text-sm">{quantity}</span>
 
-					<Button variant={'outline'} size={'icon'}>
+					<Button
+						variant={'outline'}
+						size={'icon'}
+						onClick={handleIncreaseProductQuantity}
+					>
 						<ArrowRight size={16} />
 					</Button>
 				</div>
