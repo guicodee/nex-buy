@@ -73,6 +73,7 @@ export default function CartItem({ product }: CartItem) {
 						size={'icon'}
 						className="h-8 w-8"
 						onClick={handleDecreaseProductQuantity}
+						disabled={product.quantity <= 1}
 					>
 						<ArrowLeft size={16} />
 					</Button>
@@ -84,6 +85,7 @@ export default function CartItem({ product }: CartItem) {
 						size={'icon'}
 						className="h-8 w-8"
 						onClick={handleIncreaseProductQuantity}
+						disabled={product.quantity >= 10}
 					>
 						<ArrowRight size={16} />
 					</Button>
