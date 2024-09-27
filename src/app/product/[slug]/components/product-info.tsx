@@ -38,13 +38,15 @@ export default function ProductInfo({ products }: ProductInfoProps) {
 	return (
 		<div className="lg:bg-zinc-900 max-lg:px-4 lg:px-8 max-lg:py-4 lg:py-8 rounded-lg flex flex-col gap-8">
 			<div>
-				<h1 className="text-2xl leading-8">{products?.name}</h1>
-				<span className="text-sm text-violet-400">Disponível em estoque</span>
+				<h1 className="text-2xl leading-8 font-black">{products?.name}</h1>
+				<span className="text-sm text-violet-400 font-medium">
+					Disponível em estoque
+				</span>
 			</div>
 			<div>
 				{products?.discountPercentage > 0 ? (
 					<div className="flex flex-col">
-						<div className="text-zinc-200 text-2xl max-sm:text-xl font-black flex gap-3">
+						<div className="text-zinc-200 text-2xl max-sm:text-xl font-bold flex gap-3">
 							R$ {products?.totalPrice.toFixed(2)}
 							<DiscountBadge className="max-sm:text-xs">
 								{products.discountPercentage}
@@ -59,7 +61,7 @@ export default function ProductInfo({ products }: ProductInfoProps) {
 						</p>
 					</div>
 				) : (
-					<p className="text-zinc-200 text-sm font-black">
+					<p className="text-zinc-200 text-sm font-bold">
 						R$ {Number(products?.basePrice)}
 					</p>
 				)}
@@ -69,6 +71,8 @@ export default function ProductInfo({ products }: ProductInfoProps) {
 						variant={'outline'}
 						size={'icon'}
 						onClick={handleDecreaseProductQuantity}
+						disabled={quantity <= 1}
+						className="disabled:cursor-not-allowed"
 					>
 						<ArrowLeft size={16} />
 					</Button>
@@ -79,6 +83,8 @@ export default function ProductInfo({ products }: ProductInfoProps) {
 						variant={'outline'}
 						size={'icon'}
 						onClick={handleIncreaseProductQuantity}
+						disabled={quantity >= 10}
+						className="disabled:cursor-not-allowed"
 					>
 						<ArrowRight size={16} />
 					</Button>
@@ -94,7 +100,7 @@ export default function ProductInfo({ products }: ProductInfoProps) {
 				<div className="flex flex-col gap-4 mt-8">
 					<Button
 						variant={'ghost'}
-						className="bg-violet-700 text-zinc-200 uppercase w-full hover:bg-violet-800"
+						className="bg-violet-700 text-zinc-200 uppercase w-full hover:bg-violet-800 font-bold"
 						onClick={handleAddProductToCart}
 					>
 						Adicionar ao carrinho
