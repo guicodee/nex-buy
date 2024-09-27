@@ -67,6 +67,7 @@ export default function SheetCart() {
 						<Button
 							className="bg-violet-700 text-zinc-200 uppercase hover:bg-violet-800 mt-4"
 							onClick={handleFinishBuy}
+							disabled={products.length === 0}
 						>
 							Finalizar compra
 						</Button>
